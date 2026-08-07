@@ -43,4 +43,8 @@ public class ProductoService {
     public List<Producto> obtenerProductos() {
         return productoDAO.listar();
     }
+
+    public double calcularTotalConDescuento(Producto producto, double descuento) {
+    return producto.getPrecio() * (1 - descuento);
+}
 }

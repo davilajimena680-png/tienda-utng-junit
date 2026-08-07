@@ -55,4 +55,16 @@ public class ProductoServiceTest {
         assertEquals(1, service.obtenerProductos().size());
     }
 
+    @Test
+    void calcularTotalConDescuento_descuento10_retorna90() {
+
+    Producto producto = new Producto();
+    producto.setPrecio(100);
+
+    double total = service.calcularTotalConDescuento(producto, 0.10);
+
+    assertEquals(90.0, total, 0.001, "El total con 10% de descuento debe ser 90");
 }
+
+}
+
