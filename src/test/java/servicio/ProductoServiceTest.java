@@ -65,6 +65,39 @@ public class ProductoServiceTest {
 
     assertEquals(90.0, total, 0.001, "El total con 10% de descuento debe ser 90");
 }
+    @Test
+void calcularTotalConDescuento_productoNulo_lanzaExcepcion() {
+
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.calcularTotalConDescuento(null, 0.10)
+    );
+}
+
+@Test
+void calcularTotalConDescuento_descuentoNegativo_lanzaExcepcion() {
+
+    Producto producto = new Producto();
+    producto.setPrecio(100);
+
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.calcularTotalConDescuento(producto, -0.10)
+    );
+}
+
+@Test
+void calcularTotalConDescuento_descuentoMayorUno_lanzaExcepcion() {
+
+    Producto producto = new Producto();
+    producto.setPrecio(100);
+
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.calcularTotalConDescuento(producto, 1.50)
+    );
+}
+
 
 }
 

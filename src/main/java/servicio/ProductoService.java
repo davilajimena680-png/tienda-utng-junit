@@ -41,10 +41,19 @@ public class ProductoService {
     }
 
     public List<Producto> obtenerProductos() {
-        return productoDAO.listar();
+    return productoDAO.listar();
+}
+
+public double calcularTotalConDescuento(Producto producto, double descuento) {
+
+    if (producto == null) {
+        throw new IllegalArgumentException("El producto no puede ser nulo");
     }
 
-    public double calcularTotalConDescuento(Producto producto, double descuento) {
+    if (descuento < 0 || descuento > 1) {
+        throw new IllegalArgumentException("El descuento debe estar entre 0 y 1");
+    }
+
     return producto.getPrecio() * (1 - descuento);
 }
 }
